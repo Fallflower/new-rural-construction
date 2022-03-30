@@ -3,7 +3,8 @@
 
 #include<iostream>
 #include<string>
-using namespace;
+using namespace std;
+
 
 struct CountryNode
 {
