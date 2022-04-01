@@ -5,7 +5,7 @@
 #define __ADJMULTLISTNETWORK_H_
 
 #include "AdjVexNode.h"
-#include "fstream"
+#include <fstream>
 
 //#pragma execution_character_set("utf-8")
 #define DEFAULTSIZE 1000

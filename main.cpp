@@ -49,37 +49,40 @@ int main()
         cerr << "Error: failed get network from file" << endl;
         return -1;
     }
-    ShowMenu();
-    cin >> k;
-    switch (k)
+    while (true)
     {
-    case 1:
+        ShowMenu();
+        cin >> k;
+        switch (k)
         {
+        case 1:
+            {
 
-            break;
-        }
-    case 2:
-        {
+                break;
+            }
+        case 2:
+            {
 
-            break;
-        }
-    case 3:
-        {
+                break;
+            }
+        case 3:
+            {
 
+                break;
+            }
+        case 4:
+            {
+                MultCountry.display();
+                break;
+            }
+        case 0:
+            {
+                return 0;
+                break;
+            }
+        default:
             break;
         }
-    case 4:
-        {
-            MultCountry.display();
-            break;
-        }
-    case 0:
-        {
-            return -1;
-            break;
-        }
-    default:
-        break;
     }
     return 0;
 }
