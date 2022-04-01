@@ -27,12 +27,13 @@ protected:
     void HelpCreateInsert(int v1, int v2, const int &w);
 
 public:
-    //
+//
     AdjMultListNetwork(int MaxNum = DEFAULTSIZE );
     AdjMultListNetwork(const string& filename);
     ~AdjMultListNetwork();
 
     bool IsEmpty() const;
+    void display() const;
 
     void InsertEdge(int v1, int v2, const int &w);
 };
@@ -113,6 +114,30 @@ AdjMultListNetwork::~AdjMultListNetwork()
 bool AdjMultListNetwork::IsEmpty() const
 {
     return (vexNum == 0);
+}
+
+void AdjMultListNetwork::display() const
+{//以邻接表的方式输出邻接多重表
+    AdjEdgeNode *p;
+    cout << "无向网共有" << vexNum << "个顶点，" << edgeNum << "条边。" << endl; 
+	for (int v = 0; v < vexNum; v++)	{	// 显示第v个邻接链表
+		cout << v << ":\t" << vexTable[v].country;				// 显示顶点号
+	    p = vexTable[v].firstEdge;
+	    while (p != NULL) {
+
+            if (v == p->adjvex1)
+            {
+                cout << "-->(" << p->adjvex2 << "," << p->weight << ")";
+                p = p->nextEdge1;
+            }
+            else
+            {
+                cout << "-->(" << p->adjvex1 << "," << p->weight << ")";
+                p = p->nextEdge2;
+            }
+        }
+		cout << endl; 
+	}
 }
 
 void AdjMultListNetwork::InsertEdge(int v1, int v2, const int &w)

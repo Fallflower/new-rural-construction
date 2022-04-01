@@ -38,7 +38,7 @@ void ShowMenu()
     cout << "3." << endl;
     cout << "4.----展示图-----" << endl;
     cout << "0.----退 出------" << endl;
-    cout << "请选择功能: " << endl;
+    cout << "请选择功能: " << flush;
 }
 int k;
 int main()
@@ -69,6 +69,11 @@ int main()
             break;
         }
     case 4:
+        {
+            MultCountry.display();
+            break;
+        }
+    case 0:
         {
             return -1;
             break;
