@@ -89,12 +89,10 @@ int main()
             }
         case 0:
             {
-                return 0;
-                break;
+              exit(0);
             }
         default:
             break;
         }
     }
-    return 0;
 }
