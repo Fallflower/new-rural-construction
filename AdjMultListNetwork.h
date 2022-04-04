@@ -84,12 +84,13 @@ AdjMultListNetwork::AdjMultListNetwork(const string& filename)
     vexMaxNum = DEFAULTSIZE;
     vexTable = new AdjVexNode[vexMaxNum];
     infile >> vexNum;
-    cout << vexNum << endl;
+    edgeNum = 0;
+    // cout << vexNum << endl;
     for (int i = 0; i < vexNum; i++)
     {
         CountryNode p;
         infile >> p.name >> p.population;
-        cout << p << endl;
+        //cout << p << endl;
         vexTable[i] = AdjVexNode(p);
     }
     for (int i = 0; i < vexNum; i++)
@@ -101,7 +102,7 @@ AdjMultListNetwork::AdjMultListNetwork(const string& filename)
                 HelpCreateInsert(i,j,m);
         }
     infile.close();
-    cout << vexNum << endl;
+    //cout << vexNum << endl;
 }
 
 AdjMultListNetwork::~AdjMultListNetwork()
