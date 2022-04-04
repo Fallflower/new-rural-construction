@@ -27,7 +27,7 @@
  *            佛祖保佑     永不宕机     永无BUG
  */
 //#pragma execution_character_set("utf-8")
-#include "AdjMultListNetwork.h"
+#include "method.h"
 using namespace std;
 
 void ShowMenu()
@@ -35,7 +35,7 @@ void ShowMenu()
     cout << "\n------Menu-------" << endl;
     cout << "1." << endl;
     cout << "2." << endl;
-    cout << "3." << endl;
+    cout << "3.----问 路-----" << endl;
     cout << "4.----展示图-----" << endl;
     cout << "0.----退 出------" << endl;
     cout << "请选择功能: " << flush;
@@ -43,12 +43,14 @@ void ShowMenu()
 int k;
 int main()
 {
-    AdjMultListNetwork MultCountry("E:/VSCode-projs/C_C++_files/Study_2/v_1.0/new-rural-construction/Input.txt");
+    AdjMultListNetwork MultCountry("Input.txt");
     if (MultCountry.IsEmpty())
     {
         cerr << "Error: failed get network from file" << endl;
         return -1;
     }
+    Floyd floyd(MultCountry);
+    floyd.updateMatrix();
     while (true)
     {
         ShowMenu();
@@ -66,10 +68,20 @@ int main()
                 break;
             }
         case 3:
+        {
+            int v1, v2;
+            cin >> v1 >> v2;
+            cout << "最短路径: " << v1;
+            stack<int> path = floyd.shortestPath(v1, v2);
+            while (!path.empty())
             {
-
-                break;
+                cout << "  " << path.top();
+                path.pop();
             }
+            cout << endl;
+            cout << "最短距离: " << floyd.shortestDistance(v1, v2);
+            break;
+        }
         case 4:
             {
                 MultCountry.display();

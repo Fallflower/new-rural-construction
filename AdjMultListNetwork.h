@@ -9,6 +9,7 @@
 
 //#pragma execution_character_set("utf-8")
 #define DEFAULTSIZE 1000
+#define INFINITY 65535
 
 using namespace std;
 
@@ -36,6 +37,9 @@ public:
     void display() const;
 
     void InsertEdge(int v1, int v2, const int &w);
+
+    int getWeight(int v1, int v2);
+    int getVexNum();
 };
 
 
@@ -161,5 +165,25 @@ void AdjMultListNetwork::InsertEdge(int v1, int v2, const int &w)
     edgeNum++;
 }
 
+int AdjMultListNetwork::getWeight(int v1, int v2)
+{
+    if (v1 < 0 || v1 >= vexNum)
+        cerr << "Invalid input of v1" << endl;
+    if (v2 < 0 || v2 >= vexNum)
+        cerr << "Invalid input of v2" << endl;
+    AdjEdgeNode *p = vexTable[v1].GetFirstEdge();
+    while (p != NULL && p->adjvex2 != v2)
+    {
+        p = p->nextEdge1;
+    }
+    if (p == NULL)
+        return INFINITY;
+    return p->weight;
+}
+
+int AdjMultListNetwork::getVexNum()
+{
+    return vexNum;
+}
 
 #endif
