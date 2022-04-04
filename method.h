@@ -1,3 +1,6 @@
+/*
+ * @Author: Metaphor
+ */
 #include "AdjMultListNetwork.h"
 #include <stack>
 
@@ -15,7 +18,7 @@ public:
 Floyd::Floyd(AdjMultListNetwork &network)
 {
 
-    vexNum = network.getVexNum();
+    vexNum = network.GetVexNum();
 
     dist = new int *[vexNum];
     path = new int *[vexNum];
@@ -26,7 +29,7 @@ Floyd::Floyd(AdjMultListNetwork &network)
         path[i] = new int[vexNum];
         for (int j = 0; j < vexNum; j++)
         {
-            dist[i][j] = i == j ? 0 : network.getWeight(i, j);
+            dist[i][j] = i == j ? 0 : network.GetCost(i, j);
             path[i][j] = i == j ? -1 : i;
         }
     }
@@ -40,7 +43,7 @@ void Floyd::updateMatrix()
         {
             for (int k = 0; k < vexNum; k++)
             {
-                if (dist[j][i] == INFINITY || dist[i][k] == INFINITY)
+                if (dist[j][i] == DIS_INFINITY || dist[i][k] == DIS_INFINITY)
                     continue;
                 if (dist[j][i] + dist[i][k] < dist[j][k])
                 {

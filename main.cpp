@@ -2,6 +2,9 @@
  * @Author: Metaphor
  */
 /*
+ * @Author: Metaphor
+ */
+/*
  *                        _oo0oo_
  *                       o8888888o
  *                       88" . "88
@@ -43,7 +46,7 @@ void ShowMenu()
 int k;
 int main()
 {
-    AdjMultListNetwork MultCountry("Input.txt");
+    AdjMultListNetwork MultCountry("E:\\VSCode-projs\\C_C++_files\\Study_2\\v_1.0\\new-rural-construction\\Input.txt");
     if (MultCountry.IsEmpty())
     {
         cerr << "Error: failed get network from file" << endl;
@@ -68,20 +71,20 @@ int main()
                 break;
             }
         case 3:
-        {
-            int v1, v2;
-            cin >> v1 >> v2;
-            cout << "最短路径: " << v1;
-            stack<int> path = floyd.shortestPath(v1, v2);
-            while (!path.empty())
             {
-                cout << "  " << path.top();
-                path.pop();
+                int v1, v2;
+                cin >> v1 >> v2;
+                cout << "最短路径: " << v1;
+                stack<int> path = floyd.shortestPath(v1, v2);
+                while (!path.empty())
+                {
+                    cout << "  " << path.top();
+                    path.pop();
+                }
+                cout << endl;
+                cout << "最短距离: " << floyd.shortestDistance(v1, v2);
+                break;
             }
-            cout << endl;
-            cout << "最短距离: " << floyd.shortestDistance(v1, v2);
-            break;
-        }
         case 4:
             {
                 MultCountry.display();
