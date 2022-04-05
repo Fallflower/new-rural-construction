@@ -36,7 +36,7 @@ using namespace std;
 void ShowMenu()
 {// 需要完善
     cout << "\n------Menu-------" << endl;
-    cout << "1." << endl;
+    cout << "1.----修路方案----" << endl;
     cout << "2." << endl;
     cout << "3.----问 路-----" << endl;
     cout << "4.----展示图-----" << endl;
@@ -62,7 +62,8 @@ int main()
         {
         case 1:
             {
-
+                Prim ptree(MultCountry);
+                ptree.Project(MultCountry);
                 break;
             }
         case 2:
