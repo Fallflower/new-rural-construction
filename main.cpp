@@ -23,10 +23,10 @@
  *          \  \ `_.   \_ __\ /__ _/   .-` /  /
  *      =====`-.____`.___ \_____/___.-`___.-'=====
  *                        `=---='
- * 
- * 
+ *
+ *
  *      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * 
+ *
  *            佛祖保佑     永不宕机     永无BUG
  */
 //#pragma execution_character_set("utf-8")
@@ -46,14 +46,14 @@ void ShowMenu()
 int k;
 int main()
 {
-    AdjMultListNetwork MultCountry("E:\\VSCode-projs\\C_C++_files\\Study_2\\v_1.0\\new-rural-construction\\Input.txt");
+    AdjMultListNetwork MultCountry("Input.txt");
     if (MultCountry.IsEmpty())
     {
         cerr << "Error: failed get network from file" << endl;
         return -1;
     }
     Floyd floyd(MultCountry);
-    floyd.updateMatrix();
+    floyd.updateDistanceMatrix();
     while (true)
     {
         ShowMenu();
@@ -72,13 +72,21 @@ int main()
             }
         case 3:
             {
-                int v1, v2;
-                cin >> v1 >> v2;
-                cout << "最短路径: " << v1;
+                string name1, name2;
+                cout << "请输入起点和终点: ";
+                cin >> name1 >> name2;
+                int v1 = MultCountry.GetIndex(name1);
+                int v2 = MultCountry.GetIndex(name2);
+                if (v1 == -1 || v2 == -1)
+                {
+                    cout << "起点或终点不存在!" << endl;
+                    break;
+                }
+                cout << "最短路径: " << MultCountry.GetName(v1);
                 stack<int> path = floyd.shortestPath(v1, v2);
                 while (!path.empty())
                 {
-                    cout << "  " << path.top();
+                    cout << "  " << MultCountry.GetName(path.top());
                     path.pop();
                 }
                 cout << endl;

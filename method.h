@@ -1,6 +1,3 @@
-/*
- * @Author: Metaphor
- */
 #include "AdjMultListNetwork.h"
 #include <stack>
 
@@ -10,8 +7,8 @@ public:
     int **dist, **path;
     int vexNum;
     explicit Floyd(AdjMultListNetwork &network);
-    void updateMatrix();
-    int shortestDistance(int v1, int v2);
+    void updateDistanceMatrix();
+    int shortestDistance(int v1, int v2) const;
     stack<int> shortestPath(int v1, int v2) const;
 };
 
@@ -29,13 +26,13 @@ Floyd::Floyd(AdjMultListNetwork &network)
         path[i] = new int[vexNum];
         for (int j = 0; j < vexNum; j++)
         {
-            dist[i][j] = i == j ? 0 : network.GetCost(i, j);
+            dist[i][j] = i == j ? 0 : network.GetDistance(i, j);
             path[i][j] = i == j ? -1 : i;
         }
     }
 }
 
-void Floyd::updateMatrix()
+void Floyd::updateDistanceMatrix()
 {
     for (int i = 0; i < vexNum; i++)
     {
@@ -54,7 +51,7 @@ void Floyd::updateMatrix()
         }
     }
 }
-int Floyd::shortestDistance(int v1, int v2)
+int Floyd::shortestDistance(int v1, int v2) const
 {
     return dist[v1][v2];
 }

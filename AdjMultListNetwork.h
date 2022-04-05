@@ -45,6 +45,9 @@ public:
     int GetDistance(int v1, int v2) const;          // 求两村距离
     int GetPopulation(int v1, int v2) const;        // 求两村人口总数
     int GetVexNum() const;                          // 求顶点数
+    int GetIndex(string name) const;
+    string GetName(int index) const;
+
 
     void DeleteEdge(int v1, int v2);
 };
@@ -319,6 +322,16 @@ void AdjMultListNetwork::DeleteEdge(int v1, int v2)
     if (p == NULL)
         return;
     
+}
+int AdjMultListNetwork::GetIndex(string name) const {
+  for (int i = 0; i < vexNum; ++i) {
+    if (vexTable[i].country.name == name) return i;
+  }
+  return -1;
+}
+string AdjMultListNetwork::GetName(int index) const {
+  if (index < 0 || index >= vexNum) cerr << "Invalid index.";
+  return vexTable[index].country.name;
 }
 
 #endif
