@@ -34,12 +34,7 @@ AdjVexNode::AdjVexNode(const AdjVexNode &copy)
     firstEdge = copy.firstEdge;
 }
 
-AdjVexNode& AdjVexNode::operator=(const AdjVexNode &copy)
-{
-    country = copy.country;
-    firstEdge = copy.firstEdge;
-    return (*this);
-}
+AdjVexNode &AdjVexNode::operator=(const AdjVexNode &copy) = default;
 
 AdjVexNode::~AdjVexNode()
 {

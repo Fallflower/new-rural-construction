@@ -69,16 +69,6 @@ AdjEdgeNode::~AdjEdgeNode()
     if(nextEdge2 != NULL)
         delete[] nextEdge2;
 }
-AdjEdgeNode & AdjEdgeNode::operator=(const AdjEdgeNode &copy)
-{
-    tag = copy.tag;
-    cost = copy.cost;
-    distance = copy.cost;
-    adjvex1 = copy.adjvex1;
-    adjvex2 = copy.adjvex2;
-    nextEdge1 = copy.nextEdge1;
-    nextEdge2 = copy.nextEdge2;
-    return (*this);
-}
+AdjEdgeNode &AdjEdgeNode::operator=(const AdjEdgeNode &copy) = default;
 
 #endif
