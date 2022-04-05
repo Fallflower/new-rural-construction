@@ -3,9 +3,10 @@
 
 class Floyd
 {
-public:
+ protected:
     int **dist, **path;
     int vexNum;
+ public:
     explicit Floyd(AdjMultListNetwork &network);
     void updateDistanceMatrix();
     int shortestDistance(int v1, int v2) const;
