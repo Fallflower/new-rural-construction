@@ -37,7 +37,7 @@ void ShowMenu()
 {// 需要完善
     cout << "\n------Menu-------" << endl;
     cout << "1.----修路方案----" << endl;
-    cout << "2." << endl;
+    cout << "2.----医院地址----" << endl;
     cout << "3.----问 路-----" << endl;
     cout << "4.----展示图-----" << endl;
     cout << "0.----退 出------" << endl;
@@ -68,8 +68,21 @@ int main()
             }
         case 2:
             {
-
-                break;
+              int minn = 0;
+              int sum = 0;
+              for (int z1 = 0, min = DIS_INFINITY; z1 < MultCountry.GetVexNum(); z1++)
+              {
+                for (int z2 = 0; z2 < MultCountry.GetVexNum(); z2++)
+                  if (z1 != z2)
+                    sum += floyd.shortestDistance(z2, z1);
+                if (min > sum)
+                {
+                  min = sum;
+                  minn = z1;
+                }
+              }
+              cout << "医院应该建于" << MultCountry.GetName(minn) << "村" << endl;
+              break;
             }
         case 3:
             {
